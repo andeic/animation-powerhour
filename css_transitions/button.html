@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Animation Powerhour</title>
+
+        <style>
+            .transition {
+                transition: all 0.2s ease;
+            }
+
+            .transition:hover,
+            .transition:focus {
+                transform: translateY(-3px);
+                box-shadow: 0 7px 0 0 #a11517;
+                color: #fff;
+            }
+
+            .transition:active {
+                transform: translateY(4px);
+                background: #d43235;
+                box-shadow: 0 0 0 0 #47090a;
+                color: #fff;
+            }
+
+            .button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background: #e5373a;
+                border-radius: 4px;
+                box-shadow: 0 4px 0 0 #a11517;
+                color: #fff;
+                display: inline-block;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                letter-spacing: 0.1rem;
+                line-height: 1.2;
+                min-height: 38px;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>3D Button Effect</h1>
+
+        <a href="#" class="button transition">PRESS ME</a>
+    </body>
+</html>

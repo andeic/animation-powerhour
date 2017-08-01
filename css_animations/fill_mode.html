@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+
+		<style>
+			.animation {
+			    animation: spin 2s 1 ease-in-out 0.5s;
+			    animation-fill-mode: forwards;
+			}
+
+			@keyframes spin {
+			    100% {
+			    	transform: rotate(300deg);
+			    }
+			}
+
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Fill-Mode Property</h1>
+		<div class="box animation">
+
+		</div>
+
+	</body>
+</html>

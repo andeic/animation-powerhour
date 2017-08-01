@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+
+		<style>
+			.animation {
+			    animation: spin 0.9s infinite linear;
+			    animation-play-state: paused;
+			}
+
+			.animation:hover {
+		        animation-play-state: running;
+		    }
+
+			@keyframes spin {
+			    100% {
+			    	transform: rotate(360deg);
+			    }
+			}
+
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Play-State Property</h1>
+		<div class="box animation">
+
+		</div>
+
+	</body>
+</html>

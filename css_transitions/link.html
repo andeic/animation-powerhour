@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Animation Powerhour</title>
+
+        <style>
+            .transition {
+                transition: background-size .2s ease-in .05s;
+            }
+
+            .transition:hover,
+            .transition:focus {
+                transition: background-size .2s ease-out .05s;
+                background-size: 100% 2px;
+            }
+
+            .link {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                text-decoration: none;
+                color: #9E0A9A;
+                display: inline;
+                font-size: 14px;
+                line-height: 1em;
+                position: relative;
+                text-align: left;
+                white-space: normal;
+                font-size: 16px;
+                padding: 0;
+                margin: 15px;
+                display: inline-block !important;
+                line-height: 1;
+                background-image: -webkit-linear-gradient(#9E0A9A 0%, #9E0A9A 100%);
+                background-image: linear-gradient(#9E0A9A 0%, #9E0A9A 100%);
+                background-repeat: no-repeat;
+                background-size: 0% 2px;
+                background-position: 0 100%;
+                padding: 0 0 4px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Underline Link</h1>
+
+        <a href="#" class="link transition">Hover Over Me</a>
+    </body>
+</html>
