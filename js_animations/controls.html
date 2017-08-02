@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+		<link rel="stylesheet" href="../normalize.css">
+		<link rel="stylesheet" href="../center.css">
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+
+			.animation-container {
+				height: 416px;
+			}
+
+			pre {
+				background: #f7f7f7;
+				padding: 32px;
+				font-family: monospace;
+			 	font-size: 18px;
+			 	box-shadow: inset 0 0 0 1px #ddd;
+			}
+			
+			h1 {
+				margin-bottom: 8px;
+			}
+			small {
+				display: block;
+				margin-bottom: 32px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="animation-container">
+			<h1>Animation Controls</h1>
+			<small>Credit to <a href="https://codepen.io/pawelgrzybek/pen/EKJqxG">https://codepen.io/pawelgrzybek/pen/EKJqxG</a></small>
+			<div class="box"></div>
+		</div>
+
+		<div>
+			<button class="js-play">Play</button>
+			<button class="js-pause">Pause</button>
+			<button class="js-reverse">Reverse</button>
+			<button class="js-cancel">Cancel</button>
+			<button class="js-playback1">x1</button>
+			<button class="js-playback2">x2</button>
+			<button class="js-playback5">x5</button>
+		</div>
+
+		<div>
+			<pre>
+Animation {
+  effect: {
+    timing: {
+      duration: <span class="dom-duration">1700</span>
+    }
+  }
+  playState: '<span class="dom-state"></span>',
+  playbackRate: <span class="dom-rate"></span>
+}
+			</pre>
+		</div>
+
+		<script>
+			var keyframes = [
+			    {
+			      offset: 0,
+			      transform: 'none'
+			    },
+			    {
+			      offset: 0.25,
+			      transform: 'translate(200px, 0)'
+			    },
+			    {
+			      offset: 0.5,
+			      transform: 'translate(200px, 200px)'
+			    },
+			    {
+			      offset: 0.75,
+			      transform: 'translate(0, 200px)'
+			    },
+			    {
+			      offset: 1,
+			      transform: 'none'
+			    }
+			];
+
+			var timing = {
+			    duration: 1700,
+			    easing: 'cubic-bezier(.6, 0, 1, .6)',
+			    iterations: Infinity,
+			    direction: 'normal',
+			    fill: 'both'
+		  	};
+
+			var boxAnimation = document.querySelector('.box').animate(keyframes, timing);
+
+			// idle on start
+			boxAnimation.cancel();
+
+			// buttons & inputs
+			var play = document.querySelector('.js-play');
+			var pause = document.querySelector('.js-pause');
+			var reverse = document.querySelector('.js-reverse');
+			var cancel = document.querySelector('.js-cancel');
+			var playback1 = document.querySelector('.js-playback1');
+			var playback2 = document.querySelector('.js-playback2');
+			var playback5 = document.querySelector('.js-playback5');
+
+			// dom reference
+			var domDuration = document.querySelector('.dom-duration');
+			var domState = document.querySelector('.dom-state');
+			var domRate = document.querySelector('.dom-rate');
+
+			// domDuration.innerHTML = boxAnimation.effect.timing.duration;
+			domState.innerHTML = boxAnimation.playState;
+			domRate.innerHTML = boxAnimation.playbackRate;
+
+			play.addEventListener('click', function() {
+			  boxAnimation.play();
+			  domState.innerHTML = 'running';
+			});
+
+			pause.addEventListener('click', function() {
+			  boxAnimation.pause();
+			  domState.innerHTML = 'paused';
+			});
+
+			reverse.addEventListener('click', function() {
+			  boxAnimation.reverse();
+			  console.log(boxAnimation.playbackRate);
+			  domState.innerHTML = 'running';
+			  domRate.innerHTML = boxAnimation.playbackRate;
+			});
+
+			cancel.addEventListener('click', function() {
+			  boxAnimation.cancel();
+			  console.log(boxAnimation.playState);
+			  domState.innerHTML = 'idle';
+			});
+
+			playback1.addEventListener('click', function() {
+			  boxAnimation.playbackRate = Math.sign(boxAnimation.playbackRate) * 1;
+			  domRate.innerHTML = boxAnimation.playbackRate;
+			});
+
+			playback2.addEventListener('click', function() {
+			  boxAnimation.playbackRate = Math.sign(boxAnimation.playbackRate) * 2;
+			  domRate.innerHTML = boxAnimation.playbackRate;
+			});
+
+			playback5.addEventListener('click', function() {
+			  boxAnimation.playbackRate = Math.sign(boxAnimation.playbackRate) * 5;
+			  domRate.innerHTML = boxAnimation.playbackRate;
+			});
+		</script>
+	</body>
+</html>
