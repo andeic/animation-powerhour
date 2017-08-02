@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+		<link rel="stylesheet" href="../normalize.css">
+		<link rel="stylesheet" href="../center.css">
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Basic Animation</h1>
+		<div class="box"></div>
+
+		<script>
+			var element = document.querySelector('.box');
+			var animation = {
+				backgroundColor: [
+					'green',
+					'red'
+				]
+			};
+			var timing = {
+				duration: 2000,
+				iterations: Infinity,
+				direction: 'alternate'
+			};
+
+			element.animate(animation, timing);
+		</script>
+	</body>
+</html>

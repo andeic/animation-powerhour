@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+		<link rel="stylesheet" href="../normalize.css">
+		<link rel="stylesheet" href="../center.css">
+		<style>
+			.ball {
+				width: 50px;
+				height: 50px;
+				position: relative;
+				background-color: green;
+				border-radius: 50%;
+			}
+
+			.animation {
+				animation: easeOutBounce 1s forwards;
+			}
+
+			@keyframes easeOutBounce {
+				0% {
+					transform: translateY(0px);
+					animation-timing-function: ease-in;
+				}
+				33% {
+					transform: translateY(200px);
+					animation-timing-function: ease-out;
+				}
+				50% {
+					transform: translateY(160px);
+					animation-timing-function: ease-in;
+				}
+				66% {
+					transform: translateY(200px);
+					animation-timing-function: ease-out;
+				}
+				82% {
+					transform: translateY(190px);
+					animation-timing-function: ease-in;
+				}
+				92% {
+					transform: translateY(200px);
+					animation-timing-function: ease-out;
+				}
+				97% {
+					transform: translateY(197px);
+					animation-timing-function: ease-in;
+				}
+				100% {
+					transform: translateY(200px);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Bouncing Ball</h1>
+		<div class="ball animation"></div>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+		<link rel="stylesheet" href="../normalize.css">
+		<link rel="stylesheet" href="../center.css">
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Multiple Keyframes</h1>
+		<div class="box"></div>
+
+		<script>
+			var element = document.querySelector('.box');
+			var animation = [
+				{
+					backgroundColor: 'green',
+					transform: 'translate3d(0, 0, 0)'
+				},
+				{
+					backgroundColor: 'orange',
+					transform: 'translate3d(200px, 0, 0)',
+					easing: 'ease-in'
+				},
+				{
+					backgroundColor: 'red',
+					transform: 'translate3d(200px, 200px, 0)',
+					easing: 'ease-out'
+				},
+				{
+					backgroundColor: 'orange',
+					transform: 'translate3d(0, 200px, 0)',
+					easing: 'ease-in-out',
+					offset: 0.9
+				},
+				{
+					backgroundColor: 'green',
+					transform: 'translate3d(0, 0, 0)',
+					easing: 'cubic-bezier(0.42, 0, 0.58, 1)'
+				}
+			];
+			var timing = {
+				duration: 4000,
+				iterations: Infinity
+			};
+
+			element.animate(animation, timing);
+		</script>
+	</body>
+</html>
