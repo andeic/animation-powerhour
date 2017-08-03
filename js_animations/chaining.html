@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Animation Powerhour</title>
+		<link rel="stylesheet" href="../normalize.css">
+		<link rel="stylesheet" href="../center.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.1/web-animations-next.min.js"></script>
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Animation.onfinish</h1>
+		<div class="box"></div>
+
+		<script>
+			var element = document.querySelector('.box');
+
+			var keyframesA = [
+				{
+					backgroundColor: 'green',
+					transform: 'translate3d(0, 0, 0)',
+					easing: 'ease-in'
+				},
+				{
+					backgroundColor: 'orange',
+					transform: 'translate3d(200px, 0, 0)',
+					easing: 'ease-out'
+				},
+				{
+					backgroundColor: 'red',
+					transform: 'translate3d(200px, 200px, 0)'
+				}
+			];
+			var timingA = {
+				duration: 2000,
+				iterations: 1,
+				fill: 'forwards'
+			};
+
+			var keyframesB = [
+				{
+					transform: 'translate3d(200px, 200px, 0) rotate(0)',
+					easing: 'ease-out'
+				},
+				{
+					transform: 'translate3d(0, 0, 0) rotate(360deg)'
+				}
+			];
+			var timingB = {
+				duration: 400,
+				iterations: 1,
+				delay: 600,
+				fill: 'forwards'
+			};
+
+			var animation = element.animate(keyframesA, timingA);
+
+			animation.onfinish = function() {
+			    console.log('First animation finished!');
+
+			    // start a second animation on the same element
+			    var animationB = element.animate(keyframesB, timingB);
+
+			    animationB.onfinish = function() {
+			        console.log('Second animation finished!');
+			    };
+			};
+
+			// Currently promises require a polyfill
+			// animation.finished.then(function() {
+			// 	console.log('First promise finished!');
+			// 	var animationB = element.animate(keyframesB, timingB);
+			// 	return animationB.finished;
+			// }).then(function() {
+			// 	console.log('Second promise finished!');
+			// });
+		</script>
+	</body>
+</html>
